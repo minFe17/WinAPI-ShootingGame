@@ -6,7 +6,7 @@ private:
 	const int ENEMY_SPAWN = 5;
 	const int ENEMY_POOL_SIZE = 50;
 	const float SPAWN_TIME = 0.5f;
-	const float BOSS_SPAWN_TIME = 50.0f;
+	const float BOSS_SPAWN_TIME = 180.0f;
 	const float ROUND_TIME = 5.0f;
 
 public:

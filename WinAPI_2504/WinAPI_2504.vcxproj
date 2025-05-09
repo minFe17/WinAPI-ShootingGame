@@ -146,6 +146,7 @@
     <ClInclude Include="Objects\PaintTool.h" />
     <ClInclude Include="Objects\Player.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scenes\LobbyScene.h" />
     <ClInclude Include="Scenes\Scene.h" />
     <ClInclude Include="Scenes\ShootingScene.h" />
     <ClInclude Include="targetver.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="Objects\Enemy.cpp" />
     <ClCompile Include="Objects\PaintTool.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
+    <ClCompile Include="Scenes\LobbyScene.cpp" />
     <ClCompile Include="Scenes\ShootingScene.cpp" />
     <ClCompile Include="WinAPI_2504.cpp" />
   </ItemGroup>
