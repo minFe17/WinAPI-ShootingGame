@@ -5,8 +5,7 @@ enum SceneType
 	Lobby,
 	ChioceCharacter,
 	InGame,
-	GameOver,
-	GameClear,
+	EndGame,
 	Max,
 };
 
