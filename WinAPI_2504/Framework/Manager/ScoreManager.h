@@ -6,8 +6,8 @@ public:
 	ScoreManager();
 	~ScoreManager();
 	void AddScore(int score);
-	int GetScore() { return score; }
+	int GetScore() { return _score; }
 
 private:
-	int score;
+	int _score;
 };

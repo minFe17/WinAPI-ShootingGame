@@ -2,7 +2,7 @@
 
 ScoreManager::ScoreManager()
 {
-	score = 0;
+	_score = 0;
 }
 
 ScoreManager::~ScoreManager()
@@ -11,5 +11,5 @@ ScoreManager::~ScoreManager()
 
 void ScoreManager::AddScore(int score)
 {
-	score += score;
+	_score += score;
 }

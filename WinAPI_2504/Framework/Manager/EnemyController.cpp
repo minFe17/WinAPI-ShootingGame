@@ -23,11 +23,15 @@ EnemyController::~EnemyController()
 
 void EnemyController::RoundTimer()
 {
-	_roundTimer += DELTA;
+	if(!_isSpawn)
+		_roundTimer += DELTA;
 	_bossSpawnTimer += DELTA;
 
-	if (_roundTimer >= ROUND_TIME)
+	if (!_isSpawn && _roundTimer >= ROUND_TIME)
+	{
 		_isSpawn = true;
+		_roundTimer = 0.0f;
+	}
 
 	if (_bossSpawnTimer >= BOSS_SPAWN_TIME)
 		BossSpawn();
@@ -35,19 +39,26 @@ void EnemyController::RoundTimer()
 
 void EnemyController::SpawnTimer()
 {
+	int positionIndex = rand() % _spawnPosition.size();
+
 	if (!_isSpawn)
 		return;
 
-	for (int i = 0; i < ENEMY_SPAWN; i++)
+	_spawnTimer += DELTA;
+
+	if (_spawnTimer >= SPAWN_TIME)
 	{
-		_spawnTimer += DELTA;
-		if (_spawnTimer >= SPAWN_TIME)
+		_spawnTimer = 0.0f;
+		_spawnCount++;
+		Spawn(positionIndex);
+		
+		if (_spawnCount == ENEMY_SPAWN)
 		{
-			_spawnTimer = 0.0f;
-			Spawn();
+			_spawnCount = 0;
+			_isSpawn = false;
+
 		}
 	}
-	_isSpawn = false;
 }
 
 void EnemyController::Update()
@@ -85,10 +96,8 @@ void EnemyController::SetSpawnPosition()
 	}
 }
 
-void EnemyController::Spawn()
+void EnemyController::Spawn(int positionIndex)
 {
-	int positionIndex = rand() % _spawnPosition.size();
-
 	for (Enemy*& enemy : _enemies)
 	{
 		if (!enemy->IsActive())
@@ -102,4 +111,5 @@ void EnemyController::Spawn()
 void EnemyController::BossSpawn()
 {
 	Vector2 bossPosition = {SCREEN_WIDTH / 2, 0};
+	// 보스 스폰 구현 필요
 }
