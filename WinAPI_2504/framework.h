@@ -33,6 +33,8 @@ using namespace std;
 #include "Framework/Manager/EnemyManager.h"
 
 #include "Scenes/Scene.h"
+#include "Scenes/ShootingScene.h"
+#include "Framework/Manager/SceneManager.h"
 #include "Framework/GameManager.h"
 
 extern HWND hWnd;

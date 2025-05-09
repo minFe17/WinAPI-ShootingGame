@@ -133,6 +133,7 @@
     <ClInclude Include="Framework.h" />
     <ClInclude Include="Framework\GameManager.h" />
     <ClInclude Include="Framework\Manager\EnemyManager.h" />
+    <ClInclude Include="Framework\Manager\SceneManager.h" />
     <ClInclude Include="Framework\Math\Vector2.h" />
     <ClInclude Include="Framework\Manager\ScoreManager.h" />
     <ClInclude Include="Framework\Utilities\Input.h" />
@@ -156,6 +157,7 @@
     </ClCompile>
     <ClCompile Include="Framework\GameManager.cpp" />
     <ClCompile Include="Framework\Manager\EnemyManager.cpp" />
+    <ClCompile Include="Framework\Manager\SceneManager.cpp" />
     <ClCompile Include="Framework\Manager\ScoreManager.cpp" />
     <ClCompile Include="Framework\Utilities\Input.cpp" />
     <ClCompile Include="Framework\Utilities\Timer.cpp" />

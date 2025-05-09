@@ -38,4 +38,5 @@ private:
 	bool _isSpawn = false;
 	vector<Vector2> _spawnPosition;
 	vector<Enemy*> _enemies;
+	Enemy* _boss;
 };

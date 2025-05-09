@@ -1,5 +1,4 @@
 #include "Framework.h"
-#include "ShootingScene.h"
 
 ShootingScene::ShootingScene()
 {

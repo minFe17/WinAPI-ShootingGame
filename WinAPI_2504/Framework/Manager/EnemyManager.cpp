@@ -15,9 +15,7 @@ EnemyManager::EnemyManager()
 EnemyManager::~EnemyManager()
 {
 	for (Enemy*& enemy : _enemies)
-	{
 		delete enemy;
-	}
 	_enemies.clear();
 }
 
@@ -56,7 +54,6 @@ void EnemyManager::SpawnTimer()
 		{
 			_spawnCount = 0;
 			_isSpawn = false;
-
 		}
 	}
 }
@@ -104,4 +101,5 @@ void EnemyManager::BossSpawn()
 {
 	Vector2 bossPosition = {SCREEN_WIDTH / 2, 0};
 	// 보스 스폰 구현 필요
+	_boss->Spawn(bossPosition);
 }

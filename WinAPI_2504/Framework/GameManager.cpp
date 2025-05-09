@@ -10,16 +10,13 @@ GameManager::GameManager()
 	backBufferBitmap = CreateCompatibleBitmap(hdc, SCREEN_WIDTH, SCREEN_HEIGHT);
 	SelectObject(backBufferDC, backBufferBitmap);
 
+	sceneManager = SceneManager::Get();
 	Create();
-
-	scene = new ShootingScene();
 }
 
 GameManager::~GameManager()
 {
 	ReleaseDC(hWnd, hdc);		
-
-	delete scene;
 
 	Release();
 
@@ -32,7 +29,7 @@ void GameManager::Update()
 	Timer::Get()->Update();
 	Input::Get()->Update();
 
-	scene->Update();
+	sceneManager->GetScene()->Update();
 
 	InvalidateRect(hWnd, nullptr, false);
 }
@@ -41,7 +38,7 @@ void GameManager::Render()
 {
 	PatBlt(backBufferDC, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, WHITENESS);	
 
-	scene->Render(backBufferDC);
+	sceneManager->GetScene()->Render(backBufferDC);
 
 	BitBlt(hdc, 
 		0, 0, SCREEN_WIDTH, SCREEN_HEIGHT,

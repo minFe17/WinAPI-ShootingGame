@@ -16,8 +16,7 @@ private:
 private:
 	HDC hdc;	
 
-	Scene* scene;
-
+	SceneManager* sceneManager;
 	HDC backBufferDC;
 	HBITMAP backBufferBitmap;
 };
