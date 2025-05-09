@@ -30,8 +30,7 @@ using namespace std;
 #include "Objects/Bullet.h"
 #include "Objects/BulletManager.h"
 #include "Objects/Enemy.h"
-#include "Objects/EnemyManager.h"
-#include "Framework/Manager/EnemyController.h"
+#include "Framework/Manager/EnemyManager.h"
 
 #include "Scenes/Scene.h"
 #include "Framework/GameManager.h"

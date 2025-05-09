@@ -54,9 +54,6 @@
     <ClInclude Include="Scenes\ShootingScene.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Objects\EnemyManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Utilities\Singleton.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -72,7 +69,7 @@
     <ClInclude Include="Framework\Manager\ScoreManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Manager\EnemyController.h">
+    <ClInclude Include="Framework\Manager\EnemyManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -107,9 +104,6 @@
     <ClCompile Include="Scenes\ShootingScene.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Objects\EnemyManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Utilities\Timer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -119,7 +113,7 @@
     <ClCompile Include="Framework\Manager\ScoreManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Manager\EnemyController.cpp">
+    <ClCompile Include="Framework\Manager\EnemyManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

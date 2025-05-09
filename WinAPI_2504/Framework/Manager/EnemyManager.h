@@ -1,17 +1,17 @@
 #pragma once
 
-class EnemyController : public Singleton<EnemyController>
+class EnemyManager : public Singleton<EnemyManager>
 {
 private:
 	const int ENEMY_SPAWN = 5;
 	const int ENEMY_POOL_SIZE = 50;
 	const float SPAWN_TIME = 0.5f;
-	const float BOSS_SPAWN_TIME = 100.0f;
-	const float ROUND_TIME = 10.0f;
+	const float BOSS_SPAWN_TIME = 50.0f;
+	const float ROUND_TIME = 5.0f;
 
 public:
-	EnemyController();
-	~EnemyController();
+	EnemyManager();
+	~EnemyManager();
 
 	// 있어야 하는가 
 	// 센터 때문에 있어야 하나

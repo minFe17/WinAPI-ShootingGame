@@ -1,6 +1,6 @@
 #include "Framework.h"
 
-EnemyController::EnemyController()
+EnemyManager::EnemyManager()
 {
 	SetSpawnPosition();
 
@@ -12,7 +12,7 @@ EnemyController::EnemyController()
 	}
 }
 
-EnemyController::~EnemyController()
+EnemyManager::~EnemyManager()
 {
 	for (Enemy*& enemy : _enemies)
 	{
@@ -21,7 +21,7 @@ EnemyController::~EnemyController()
 	_enemies.clear();
 }
 
-void EnemyController::RoundTimer()
+void EnemyManager::RoundTimer()
 {
 	if(!_isSpawn)
 		_roundTimer += DELTA;
@@ -37,7 +37,7 @@ void EnemyController::RoundTimer()
 		BossSpawn();
 }
 
-void EnemyController::SpawnTimer()
+void EnemyManager::SpawnTimer()
 {
 	int positionIndex = rand() % _spawnPosition.size();
 
@@ -61,42 +61,34 @@ void EnemyController::SpawnTimer()
 	}
 }
 
-void EnemyController::Update()
+void EnemyManager::Update()
 {
 	RoundTimer();
 	SpawnTimer();
 
 	for (Enemy*& enemy : _enemies)
-	{
 		enemy->Update();
-	}
 }
 
-void EnemyController::Render(HDC hdc)
+void EnemyManager::Render(HDC hdc)
 {
 	for (Enemy*& enemy : _enemies)
-	{
 		enemy->Render(hdc);
-	}
 }
 
-void EnemyController::SetPlayer(Player* player)
+void EnemyManager::SetPlayer(Player* player)
 {
 	for (Enemy*& enemy : _enemies)
-	{
 		enemy->SetPlayer(player);
-	}
 }
 
-void EnemyController::SetSpawnPosition()
+void EnemyManager::SetSpawnPosition()
 {
 	for (int i = 1; i < 6; i++)
-	{
 		_spawnPosition.push_back(Vector2(100 * i, 0));
-	}
 }
 
-void EnemyController::Spawn(int positionIndex)
+void EnemyManager::Spawn(int positionIndex)
 {
 	for (Enemy*& enemy : _enemies)
 	{
@@ -108,7 +100,7 @@ void EnemyController::Spawn(int positionIndex)
 	}
 }
 
-void EnemyController::BossSpawn()
+void EnemyManager::BossSpawn()
 {
 	Vector2 bossPosition = {SCREEN_WIDTH / 2, 0};
 	// 보스 스폰 구현 필요

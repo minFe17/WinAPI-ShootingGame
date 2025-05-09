@@ -132,7 +132,7 @@
   <ItemGroup>
     <ClInclude Include="Framework.h" />
     <ClInclude Include="Framework\GameManager.h" />
-    <ClInclude Include="Framework\Manager\EnemyController.h" />
+    <ClInclude Include="Framework\Manager\EnemyManager.h" />
     <ClInclude Include="Framework\Math\Vector2.h" />
     <ClInclude Include="Framework\Manager\ScoreManager.h" />
     <ClInclude Include="Framework\Utilities\Input.h" />
@@ -142,7 +142,6 @@
     <ClInclude Include="Objects\BulletManager.h" />
     <ClInclude Include="Objects\Circle.h" />
     <ClInclude Include="Objects\Enemy.h" />
-    <ClInclude Include="Objects\EnemyManager.h" />
     <ClInclude Include="Objects\PaintTool.h" />
     <ClInclude Include="Objects\Player.h" />
     <ClInclude Include="Resource.h" />
@@ -156,7 +155,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Framework\GameManager.cpp" />
-    <ClCompile Include="Framework\Manager\EnemyController.cpp" />
+    <ClCompile Include="Framework\Manager\EnemyManager.cpp" />
     <ClCompile Include="Framework\Manager\ScoreManager.cpp" />
     <ClCompile Include="Framework\Utilities\Input.cpp" />
     <ClCompile Include="Framework\Utilities\Timer.cpp" />
@@ -164,7 +163,6 @@
     <ClCompile Include="Objects\BulletManager.cpp" />
     <ClCompile Include="Objects\Circle.cpp" />
     <ClCompile Include="Objects\Enemy.cpp" />
-    <ClCompile Include="Objects\EnemyManager.cpp" />
     <ClCompile Include="Objects\PaintTool.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
     <ClCompile Include="Scenes\ShootingScene.cpp" />
