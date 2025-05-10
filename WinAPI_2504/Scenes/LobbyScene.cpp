@@ -5,13 +5,12 @@ void LobbyScene::Update()
 	TriggerPlayButton();
 
 	if (_isTriggerPlayButton && Input::Get()->IsKeyDown(VK_LBUTTON))
-		SceneManager::Get()->SetSceneType(InGame);
+		SceneManager::Get()->SetSceneType(SceneType::ChoiceCharacter);
 }
 
 void LobbyScene::Render(HDC hdc)
 {
 	SetPlayButton(hdc);
-	ShowTitle();
 }
 
 void LobbyScene::SetPlayButton(HDC hdc)
@@ -28,13 +27,12 @@ void LobbyScene::SetPlayButton(HDC hdc)
 
 	// 삼각형 그리기
 	POINT triangle[3] = { { centerX - 30, 630 }, { centerX - 30, 670 }, { centerX + 30, 650 } };
-	HBRUSH hBrush = CreateSolidBrush(RGB(255, 0, 0));
-	HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, hBrush);
+	HBRUSH hBrush = CreateSolidBrush(RGB(255, 255, 255));
+	SelectObject(hdc, hBrush);
 
 	// 삼각형 내부 채우며 그림
 	Polygon(hdc, triangle, 3);
 
-	SelectObject(hdc, hOldBrush);
 	DeleteObject(hBrush);
 }
 

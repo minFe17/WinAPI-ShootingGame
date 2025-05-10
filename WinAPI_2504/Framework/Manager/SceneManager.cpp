@@ -12,9 +12,15 @@ SceneManager::~SceneManager()
 	_scenes.clear();
 }
 
+void SceneManager::InitInGamePlayer(Player* player)
+{
+	ShootingScene* inGameScene = (ShootingScene*)_scenes[(int)SceneType::InGame];
+	inGameScene->SetPlayer(player);
+}
+
 void SceneManager::InitScene()
 {
-	// 씬 만들때마다 추가 (enum타입에 맞는 씬 만들기)
 	_scenes.push_back(new LobbyScene());
+	_scenes.push_back(new ChoiceCharacterScene());
 	_scenes.push_back(new ShootingScene());
 }

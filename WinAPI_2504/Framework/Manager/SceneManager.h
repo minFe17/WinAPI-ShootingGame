@@ -1,9 +1,9 @@
 #pragma once
 
-enum SceneType
+enum class SceneType
 {
 	Lobby,
-	// ChioceCharacter,
+	ChoiceCharacter,
 	InGame,
 	GameOver,
 	GameClear,
@@ -18,6 +18,7 @@ public:
 
 	Scene* GetScene() { return _scenes[(int)_sceneType]; }
 	void SetSceneType(SceneType type) { _sceneType = type; }
+	void InitInGamePlayer(Player* player);
 
 private:
 	void InitScene();

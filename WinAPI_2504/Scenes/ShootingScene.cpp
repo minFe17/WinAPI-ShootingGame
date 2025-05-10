@@ -2,9 +2,7 @@
 
 ShootingScene::ShootingScene()
 {
-	player = new Player();	
-
-	BulletManager::Get();
+;	BulletManager::Get();
 	EnemyManager::Get()->SetPlayer(player);
 }
 

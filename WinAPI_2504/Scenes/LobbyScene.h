@@ -5,10 +5,10 @@ class LobbyScene : public Scene
 public:
 	void Update() override;
 	void Render(HDC hdc) override;
-	void SetPlayButton(HDC hdc);
 
 private:
 	void TriggerPlayButton();
+	void SetPlayButton(HDC hdc);
 
 private:
 	bool _isTriggerPlayButton;
