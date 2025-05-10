@@ -7,7 +7,6 @@ void ChoiceCharacterScene::Update()
 	{
 		if (_isTriggerButton[i] && Input::Get()->IsKeyDown(VK_LBUTTON))
 		{
-			// 
 			SceneManager::Get()->InitInGamePlayer(new Player);
 			//SceneManager::Get()->InitInGamePlayer(_players[i]);
 			SceneManager::Get()->SetSceneType(SceneType::InGame);

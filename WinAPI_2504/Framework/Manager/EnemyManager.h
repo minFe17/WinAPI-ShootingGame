@@ -13,11 +13,6 @@ public:
 	EnemyManager();
 	~EnemyManager();
 
-	// 있어야 하는가 
-	// 센터 때문에 있어야 하나
-	// 센터에 사용할거면 벡터 다 넘기지 않고 랜덤으로 넘겨도 될거 같음
-	const vector<Vector2>& GetSpawnPosition() { return _spawnPosition; }
-
 	void Update();
 	void Render(HDC hdc);
 	void SetPlayer(Player* player);

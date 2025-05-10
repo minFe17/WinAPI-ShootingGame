@@ -8,7 +8,7 @@ public:
 
 private:
 	void TriggerPlayButton();
-	void SetPlayButton(HDC hdc);
+	void SetPlayButton();
 
 private:
 	bool _isTriggerPlayButton;
