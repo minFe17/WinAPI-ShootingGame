@@ -45,12 +45,21 @@ void GameManager::Render()
 		backBufferDC, 0, 0, SRCCOPY);
 }
 
+void GameManager::GameOver()
+{
+	SceneManager::Get()->SetSceneType(SceneType::GameOver);
+}
+
+void GameManager::GameClear()
+{
+	SceneManager::Get()->SetSceneType(SceneType::GameClear);
+}
+
 void GameManager::Create()
 {
 	Timer::Get();
 	Input::Get();
 	ScoreManager::Get();
-
 }
 
 void GameManager::Release()

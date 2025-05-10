@@ -3,9 +3,10 @@
 enum SceneType
 {
 	Lobby,
-	ChioceCharacter,
+	// ChioceCharacter,
 	InGame,
-	EndGame,
+	GameOver,
+	GameClear,
 	Max,
 };
 

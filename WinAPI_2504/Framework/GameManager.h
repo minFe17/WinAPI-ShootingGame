@@ -8,6 +8,8 @@ public:
 
 	void Update();
 	void Render();
+	void GameOver();
+	void GameClear();
 
 private:
 	void Create();
