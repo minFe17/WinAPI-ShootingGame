@@ -13,9 +13,9 @@ public:
 	void SetPlayer(Player* player) { this->player = player; }
 
 private:
-	void ShowScore();
-	void ShowHP();
-	void DrawPlayerIcon();
+	void ShowScore(HDC hdc);
+	void ShowHP(HDC hdc);
+	void DrawPlayerIcon(HDC hdc);
 
 private:
 	int _playerIconRadius = 20;

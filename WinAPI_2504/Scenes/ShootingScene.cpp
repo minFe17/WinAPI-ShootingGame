@@ -28,14 +28,12 @@ void ShootingScene::Render(HDC hdc)
 	BulletManager::Get()->Render(hdc);
 	EnemyManager::Get()->Render(hdc);
 
-	ShowScore();
-	ShowHP();
+	ShowScore(hdc);
+	ShowHP(hdc);
 }
 
-void ShootingScene::ShowScore()
+void ShootingScene::ShowScore(HDC hdc)
 {
-	HDC hdc = GetDC(hWnd);
-
 	// 가운데 정렬
 	SetTextAlign(hdc, TA_CENTER | TA_BASELINE);
 	SelectObject(hdc, _scoreFont);
@@ -44,10 +42,9 @@ void ShootingScene::ShowScore()
 	TextOut(hdc, scorePosition.x, scorePosition.y, score.c_str(), score.length());
 }
 
-void ShootingScene::ShowHP()
+void ShootingScene::ShowHP(HDC hdc)
 {
-	HDC hdc = GetDC(hWnd);
-	DrawPlayerIcon();
+	DrawPlayerIcon(hdc);
 
 	SetTextAlign(hdc, TA_LEFT | TA_TOP);
 	// 점수가 아닌 플레이어 체력
@@ -55,10 +52,8 @@ void ShootingScene::ShowHP()
 	//TextOut(hdc, 70, 5, hp.c_str(), hp.length());
 }
 
-void ShootingScene::DrawPlayerIcon()
+void ShootingScene::DrawPlayerIcon(HDC hdc)
 {
-	HDC hdc = GetDC(hWnd);
-
 	POINT front = { _playerIconCenter.x, _playerIconCenter.y - _playerIconRadius };
 	POINT right = { _playerIconCenter.x + _playerIconRadius, _playerIconCenter.y + _playerIconRadius };
 	POINT left = { _playerIconCenter.x - _playerIconRadius, _playerIconCenter.y + _playerIconRadius };

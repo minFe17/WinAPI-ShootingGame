@@ -10,12 +10,11 @@ void LobbyScene::Update()
 
 void LobbyScene::Render(HDC hdc)
 {
-	SetPlayButton();
+	SetPlayButton(hdc);
 }
 
-void LobbyScene::SetPlayButton()
+void LobbyScene::SetPlayButton(HDC hdc)
 {
-	HDC hdc = GetDC(hWnd);
 	int centerX = SCREEN_WIDTH / 2;
 
 	if (_isTriggerPlayButton)
