@@ -22,7 +22,8 @@ void SceneManager::InitInGamePlayer(Player* player)
 
 void SceneManager::InitScene()
 {
-	_scenes.push_back(new LobbyScene());
-	_scenes.push_back(new ChoiceCharacterScene());
-	_scenes.push_back(new ShootingScene());
+	//_scenes.push_back(new LobbyScene());
+	//_scenes.push_back(new ChoiceCharacterScene());
+	//_scenes.push_back(new ShootingScene());
+	_scenes.push_back(new GameOverScene());
 }

@@ -36,6 +36,7 @@ using namespace std;
 #include "Scenes/LobbyScene.h"
 #include "Scenes/ChoiceCharacterScene.h"
 #include "Scenes/ShootingScene.h"
+#include "Scenes/GameOverScene.h"
 #include "Framework/Manager/SceneManager.h"
 #include "Framework/GameManager.h"
 
