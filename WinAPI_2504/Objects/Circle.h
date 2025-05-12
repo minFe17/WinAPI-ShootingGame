@@ -4,13 +4,14 @@ class Circle
 {
 public:
 	Circle(int radius);
+	Circle() {}
 	~Circle();
 
 	void Render(HDC hdc);
 
 	bool IsCollisionPoint(POINT point);
 	bool IsCollisionCircle(Circle* circle);
-	
+
 
 	void SetCenter(float x, float y) { center = { x, y }; }
 	void SetCenter(Vector2 center) { this->center = center; }
@@ -19,9 +20,13 @@ public:
 	void SetActive(bool isActive) { this->isActive = isActive; }
 	bool IsActive() { return isActive; }
 
+	void SetRadius(int radius) { this->radius = radius; }
+	int GetRadius() { return radius; }
+
 protected:
 	bool isActive = true;
 
 	Vector2 center = {};
-	int radius;
+	int radius = 0;
+
 };

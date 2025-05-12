@@ -1,6 +1,6 @@
 #include "Framework.h"
 
-Enemy::Enemy() : Circle(30)
+Enemy::Enemy()
 {
 	hRedBrush = CreateSolidBrush(RGB(255, 0, 0));
 	hBlueBrush = CreateSolidBrush(RGB(0, 0, 255));
@@ -19,8 +19,8 @@ void Enemy::Update()
 	if (!isActive) return;
 
 	Move();
-	ColorEffect();
-	//Fire();
+//	Damage();
+	Fire();
 }
 
 void Enemy::Render(HDC hdc)
@@ -45,20 +45,43 @@ void Enemy::Spawn(Vector2 pos)
 
 void Enemy::Damage(int damage)
 {
+	/*
+	if (isDamaged)
+	{
+		damageTimer += DELTA;
+
+		if (damageTimer >= DAMAGE_INTERVAL)
+		{
+			damageTimer = 0;
+			isDamaged = false;
+			hSelectBrush = hBlueBrush;
+		}
+		//return;
+	}
+
+	if (BulletManager::Get()->GetCollidedBullet(this, "Player") != nullptr)
+	{
+		//isActive = false;
+		hp -= damage;
+		isDamaged = true;
+		hSelectBrush = hRedBrush;
+
+		if (hp <= 0)
+		{
+			isActive = false;
+		}
+	}
+
+	*/
 	hp -= damage;
 	isDamaged = true;
-	damageTimer = 0.0f;
 	hSelectBrush = hRedBrush;
 
 	if (hp <= 0)
 	{
 		isActive = false;
-		int randomDrop = rand() % 10;
-		if (randomDrop < 9)
-		{
-			ItemManager::Get()->SpawnItem(center);
-		}
 	}
+
 }
 
 void Enemy::Move()
@@ -80,19 +103,6 @@ void Enemy::Fire()
 		fireTimer = 0.0f;
 
 		Vector2 direction = player->GetCenter() - center;
-		BulletManager::Get()->Fire(center, "Enemy",10,COLOR_ENEMY_BULLET,direction);
-	}
-}
-
-void Enemy::ColorEffect()
-{
-	if (!isDamaged) return;
-
-	damageTimer += DELTA;
-	if (damageTimer >= DAMAGE_INTERVAL)
-	{
-		damageTimer = 0.0f;
-		isDamaged = false;
-		hSelectBrush = hBlueBrush;
+		BulletManager::Get()->Fire(center, "Enemy",damage, COLOR_ENEMY_BULLET, direction);
 	}
 }

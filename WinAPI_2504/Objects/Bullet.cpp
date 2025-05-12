@@ -1,7 +1,8 @@
 #include "Framework.h"
 
-Bullet::Bullet() : Circle(10)
+Bullet::Bullet()
 {
+    radius = 10;
 }
 
 Bullet::~Bullet()

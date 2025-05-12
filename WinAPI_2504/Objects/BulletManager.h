@@ -15,8 +15,7 @@ public:
 	void Update(Player* player);
 	void Render(HDC hdc);
 
-	bool IsCollision(Circle* circle, string tag);	
-
+	bool IsCollision(PolygonVector* circle, string tag);
 	void Fire(Vector2 pos, string tag,int damage, COLORREF color,Vector2 direction = Vector2::Up());
 
 	Bullet* GetCollidedBullet(Circle* circle, string tag);

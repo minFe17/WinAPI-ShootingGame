@@ -144,6 +144,11 @@
     <ClInclude Include="Objects\Circle.h" />
     <ClInclude Include="Objects\Enemy.h" />
     <ClInclude Include="Objects\EnemyManager.h" />
+    <ClInclude Include="Objects\Enemys\EnemyBig.h" />
+    <ClInclude Include="Objects\Enemys\EnemyBossShip.h" />
+    <ClInclude Include="Objects\Enemys\EnemyDodger.h" />
+    <ClInclude Include="Objects\Enemys\EnemyGrunt.h" />
+    <ClInclude Include="Objects\Enemys\EnemyKamikaze.h" />
     <ClInclude Include="Objects\HeavyPlayer.h" />
     <ClInclude Include="Objects\HomingPlayer.h" />
     <ClInclude Include="Objects\Item.h" />
@@ -151,6 +156,7 @@
     <ClInclude Include="Objects\ItemType.h" />
     <ClInclude Include="Objects\NormalPlayer.h" />
     <ClInclude Include="Objects\Player.h" />
+    <ClInclude Include="Objects\PolygonVector.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scenes\ChoiceCharacterScene.h" />
     <ClInclude Include="Scenes\GameClearScene.h" />
@@ -176,11 +182,17 @@
     <ClCompile Include="Objects\Circle.cpp" />
     <ClCompile Include="Objects\Enemy.cpp" />
     <ClCompile Include="Objects\EnemyManager.cpp" />
+    <ClCompile Include="Objects\Enemys\EnemyBig.cpp" />
+    <ClCompile Include="Objects\Enemys\EnemyBossShip.cpp" />
+    <ClCompile Include="Objects\Enemys\EnemyDodger.cpp" />
+    <ClCompile Include="Objects\Enemys\EnemyGrunt.cpp" />
+    <ClCompile Include="Objects\Enemys\EnemyKamikaze.cpp" />
     <ClCompile Include="Objects\HeavyPlayer.cpp" />
     <ClCompile Include="Objects\HomingPlayer.cpp" />
     <ClCompile Include="Objects\Item.cpp" />
     <ClCompile Include="Objects\ItemManager.cpp" />
     <ClCompile Include="Objects\Player.cpp" />
+    <ClCompile Include="Objects\PolygonVector.cpp" />
     <ClCompile Include="Scenes\ChoiceCharacterScene.cpp" />
     <ClCompile Include="Scenes\GameClearScene.cpp" />
     <ClCompile Include="Scenes\GameOverScene.cpp" />

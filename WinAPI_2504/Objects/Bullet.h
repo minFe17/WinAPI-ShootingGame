@@ -2,7 +2,7 @@
 
 class Enemy;
 
-class Bullet : public Circle
+class Bullet : public PolygonVector
 {
 private:
 	const float SPEED = 500;

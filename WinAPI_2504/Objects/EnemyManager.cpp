@@ -5,9 +5,15 @@ EnemyManager::EnemyManager()
 	enemies.resize(ENEMY_POOL_SIZE);
 	for (Enemy*& enemy : enemies)
 	{
-		enemy = new Enemy();
+//		enemy = new Enemy();
+//		enemy = new EnemyKamikaze();
+		enemy = new EnemyGrunt();
+//		enemy = new EnemyDodger();
+
 		enemy->SetActive(false);
 	}
+	enemyBoss = new EnemyBossShip();
+	enemyBoss->SetActive(false);
 }
 
 EnemyManager::~EnemyManager()
@@ -20,7 +26,7 @@ EnemyManager::~EnemyManager()
 }
 
 void EnemyManager::Update(Player* player)
-{
+{/*
 	spawnTimer += DELTA;
 
 	if (spawnTimer >= SPAWN_INTERVAL)
@@ -41,6 +47,27 @@ void EnemyManager::Update(Player* player)
 			enemy->SetActive(false);
 		}
 	}
+	*/
+
+	spawnTimer += DELTA;
+	runTime += DELTA;
+
+	if (runTime <= BOSS_SPAWN && spawnTimer >= SPAWN_INTERVAL)
+	{
+		spawnTimer = 0.0f;
+		SpawnEnemy();
+	}
+	if (runTime > BOSS_SPAWN) SpawnBossEnemy();
+
+
+	for (Enemy*& enemy : enemies)
+	{
+		enemy->Update();
+	}
+	enemyBoss->Update();
+
+	EnemyBossShip* boss = (EnemyBossShip*)enemyBoss;
+	if (boss->IsDead()) GameManager::Get()->GameClear();
 }
 
 void EnemyManager::Render(HDC hdc)
@@ -49,6 +76,7 @@ void EnemyManager::Render(HDC hdc)
 	{
 		enemy->Render(hdc);
 	}
+	enemyBoss->Render(hdc);
 }
 
 void EnemyManager::SpawnEnemy()
@@ -64,6 +92,14 @@ void EnemyManager::SpawnEnemy()
 		}
 	}
 }
+void EnemyManager::SpawnBossEnemy()
+{
+	if (!enemyBoss->IsActive())
+	{
+		enemyBoss->Spawn({ SCREEN_WIDTH / 2, -500 });
+	}
+}
+
 
 void EnemyManager::SetPlayer(Player* player)
 {
@@ -71,6 +107,7 @@ void EnemyManager::SetPlayer(Player* player)
 	{
 		enemy->SetPlayer(player);
 	}
+	enemyBoss->SetPlayer(player);
 }
 
 

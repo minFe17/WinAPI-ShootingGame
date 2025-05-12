@@ -6,7 +6,7 @@ class EnemyManager : public Singleton<EnemyManager>
 private:
 	const int ENEMY_POOL_SIZE = 50;
 	const float SPAWN_INTERVAL = 1.0f;
-
+	const float BOSS_SPAWN = 5.0f;
 private:
 	EnemyManager();
 	~EnemyManager();
@@ -17,6 +17,8 @@ public:
 
 	void SpawnEnemy();
 
+	void SpawnBossEnemy();
+
 	void SetPlayer(Player* player);
 
 	Enemy* GetClosestEnemy(Vector2 pos);
@@ -24,5 +26,8 @@ public:
 
 private:
 	vector<Enemy*> enemies;
+	Enemy* enemyBoss;
 	float spawnTimer = 0.0f;
+	float runTime = 0.0f;
+
 };

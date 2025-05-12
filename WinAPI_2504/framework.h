@@ -27,11 +27,20 @@ using namespace std;
 
 #include "Objects/ItemType.h"
 #include "Objects/Circle.h"
+//#include "Objects/Circle.h"
+#include "Objects/PolygonVector.h"
 #include "Objects/Player.h"
 #include "Objects/Bullet.h"
 #include "Objects/BulletManager.h"
+
 #include "Objects/Enemy.h"
+#include "Objects/Enemys/EnemyDodger.h"
+#include "Objects/Enemys/EnemyBig.h"
+#include "Objects/Enemys/EnemyGrunt.h"
+#include "Objects/Enemys/EnemyKamikaze.h"
+#include "Objects/Enemys/EnemyBossShip.h"
 #include "Objects/EnemyManager.h"
+
 #include "Objects/NormalPlayer.h"
 #include "Objects/HeavyPlayer.h"
 #include "Objects/HomingPlayer.h"

@@ -1,7 +1,8 @@
 #pragma once
 
-class GameManager
+class GameManager : public Singleton<GameManager>
 {
+	friend class Singleton;
 public:
 	GameManager();
 	~GameManager();

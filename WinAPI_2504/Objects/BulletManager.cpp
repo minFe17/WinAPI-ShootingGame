@@ -31,7 +31,7 @@ void BulletManager::Update(Player* player)
 			{
 				if (!enemy->IsActive()) continue;
 
-				if (bullet->IsCollisionCircle(enemy))
+				if (bullet->IsCollisionCircle(enemy) || bullet->IsPolygonCircleCollision(enemy))
 				{
 					bullet->SetActive(false);
 					enemy->Damage(bullet->GetDamage());
@@ -66,7 +66,8 @@ void BulletManager::Render(HDC hdc)
 	}
 }
 
-bool BulletManager::IsCollision(Circle* circle, string tag)
+
+bool BulletManager::IsCollision(PolygonVector* circle, string tag)
 {
 	for (Bullet*& bullet : bullets)
 	{
@@ -74,16 +75,19 @@ bool BulletManager::IsCollision(Circle* circle, string tag)
 			continue;
 		if (bullet->GetTag() != tag)
 			continue;
-		if (!bullet->IsCollisionCircle(circle))
-			continue;
+		if (bullet->IsCollisionCircle(circle) || bullet->IsPolygonCircleCollision(circle))
+		{
+			//다운 캐스팅
+				//Enemy* enemy = (Enemy*)(circle);
+				//enemy->Damage();
 
-		bullet->SetActive(false);
-		return true;
+			bullet->SetActive(false);
+			return true;
+		}
 	}
 
 	return false;
 }
-
 void BulletManager::Fire(Vector2 pos, string tag,int damage, COLORREF color, Vector2 direction)
 {
 	for (Bullet*& bullet : bullets)
