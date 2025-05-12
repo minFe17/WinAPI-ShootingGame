@@ -19,8 +19,8 @@ void Enemy::Update()
 	if (!isActive) return;
 
 	Move();
-	Damage();	
-	Fire();
+	ColorEffect();
+	//Fire();
 }
 
 void Enemy::Render(HDC hdc)
@@ -43,32 +43,21 @@ void Enemy::Spawn(Vector2 pos)
 	isDamaged = false;
 }
 
-void Enemy::Damage()
+void Enemy::Damage(int damage)
 {
-	if (isDamaged)
-	{
-		damageTimer += DELTA;
+	hp -= damage;
+	isDamaged = true;
+	damageTimer = 0.0f;
+	hSelectBrush = hRedBrush;
 
-		if (damageTimer >= DAMAGE_INTERVAL)
+	if (hp <= 0)
+	{
+		isActive = false;
+		int randomDrop = rand() % 10;
+		if (randomDrop < 9)
 		{
-			damageTimer = 0;
-			isDamaged = false;
-			hSelectBrush = hBlueBrush;
+			ItemManager::Get()->SpawnItem(center);
 		}
-		return;
-	}	
-
-	if (BulletManager::Get()->IsCollision(this, "Player"))
-	{
-		//isActive = false;
-		hp -= 10;
-		isDamaged = true;
-		hSelectBrush = hRedBrush;
-
-		if (hp <= 0)
-		{
-			isActive = false;
-		}		
 	}
 }
 
@@ -91,6 +80,19 @@ void Enemy::Fire()
 		fireTimer = 0.0f;
 
 		Vector2 direction = player->GetCenter() - center;
-		BulletManager::Get()->Fire(center, "Enemy", direction);
+		BulletManager::Get()->Fire(center, "Enemy",10,COLOR_ENEMY_BULLET,direction);
+	}
+}
+
+void Enemy::ColorEffect()
+{
+	if (!isDamaged) return;
+
+	damageTimer += DELTA;
+	if (damageTimer >= DAMAGE_INTERVAL)
+	{
+		damageTimer = 0.0f;
+		isDamaged = false;
+		hSelectBrush = hBlueBrush;
 	}
 }

@@ -8,6 +8,7 @@ private:
 	~Timer();
 public:
 	void Update();
+	void Render(HDC hdc);
 	
 	float GetElapsedTime() { return elapsedTime; }
 

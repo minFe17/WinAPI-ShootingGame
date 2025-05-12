@@ -10,6 +10,7 @@
 
 #define DELTA Timer::Get()->GetElapsedTime()
 
+
 #include <windows.h>
 #include <string>
 #include <unordered_map>
@@ -24,13 +25,20 @@ using namespace std;
 
 #include "Framework/Math/Vector2.h"
 
-#include "Objects/PaintTool.h"
+#include "Objects/ItemType.h"
 #include "Objects/Circle.h"
 #include "Objects/Player.h"
 #include "Objects/Bullet.h"
 #include "Objects/BulletManager.h"
 #include "Objects/Enemy.h"
-#include "Framework/Manager/EnemyManager.h"
+#include "Objects/EnemyManager.h"
+#include "Objects/NormalPlayer.h"
+#include "Objects/HeavyPlayer.h"
+#include "Objects/HomingPlayer.h"
+#include "Objects/Item.h"
+#include "Objects/ItemManager.h"
+
+#include "Framework/Manager/EnemyController.h"
 
 #include "Scenes/Scene.h"
 #include "Scenes/LobbyScene.h"
@@ -40,6 +48,14 @@ using namespace std;
 #include "Scenes/GameClearScene.h"
 #include "Framework/Manager/SceneManager.h"
 #include "Framework/GameManager.h"
+
+//constexpr COLORREF COLOR_PLAYER_NORMAL = RGB(255, 255, 150);
+//constexpr COLORREF COLOR_PLAYER_POWERED = RGB(200, 150, 255);
+//constexpr COLORREF COLOR_ENEMY_BULLET = RGB(255, 100, 50);
+
+#define COLOR_PLAYER_NORMAL RGB(255, 255, 150)
+#define COLOR_PLAYER_POWERED RGB(200, 150, 255)
+#define COLOR_ENEMY_BULLET RGB(255, 100, 50)
 
 extern HWND hWnd;
 extern Vector2 mousePos;

@@ -44,7 +44,7 @@ void ChoiceCharacterScene::Render(HDC hdc)
 
 void ChoiceCharacterScene::InitPlayers()
 {
-	//_players.push_back();
+	//_players.push_back(new NormalPlayer());
 	_buttons.push_back({ 20, 300, 193, 500 });
 	_buttons.push_back({ 213, 300, 386, 500 });
 	_buttons.push_back({ 406, 300, 579, 500 });

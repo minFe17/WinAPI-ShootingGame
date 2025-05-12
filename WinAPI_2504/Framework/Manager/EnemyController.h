@@ -1,6 +1,6 @@
 #pragma once
 
-class EnemyManager : public Singleton<EnemyManager>
+class EnemyController : public Singleton<EnemyController>
 {
 private:
 	const int ENEMY_SPAWN = 5;
@@ -10,8 +10,8 @@ private:
 	const float ROUND_TIME = 5.0f;
 
 public:
-	EnemyManager();
-	~EnemyManager();
+	EnemyController();
+	~EnemyController();
 
 	void Update();
 	void Render(HDC hdc);

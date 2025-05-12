@@ -1,41 +1,58 @@
 #pragma once
 
 #include "Bullet.h"
-
-//정방선언
-//class Bullet;
-
+class Item;
 class Player : public Circle
 {
-private:
+protected:
 	const int SPEED = 300;
 	const int BULLET_POOL_SIZE = 50;
 	const float AIM_LENGTH = 50.0f;
+
+	const int INIT_BULLET_COUNT = 1;
+	const int MAX_BULLET_COUNT = 5;
+
 
 public:
 	Player();
 	~Player();
 
-	void Update();	
+	virtual void Update();	
 	void Render(HDC hdc);
 
-private:
-	void Fire();
+	void LevelUp(ItemType type);
+
+	void CollisionItem();
+
+	void HitEnemy();    
+	bool IsDead() const { return isDead; }
+
+protected:
+	void BulletCount();
+	virtual void Fire();
 	void ControlFire();
 	void ControlMove();
 	void ClampToScreenBounds();
-	void Aming();
 
+	void UpdatePen();
+	void ColorEffect();
+	void DrawShieldEffect(HDC hdc);
 	void DrawLine(HDC hdc);
+	COLORREF GetColor();
 
-private:
-	//전방선전
-	//Bullet* bullet;
-	//vector<Bullet*> bullets;
-	float angle = PI * 0.5f;
+protected:
+	int damage;
+	int baseDamage;
+	int bulletCount = INIT_BULLET_COUNT;
+	bool isShield = false;
+	bool isDead = false;
+	bool isDamaged = false;
+	float damageTimer = 0.0f;
+	float fireCooldown;
+	float fireTimer = 0.0f;
 
 	Vector2 firePos = {};
-	Vector2 aimPoint = {};
-
+	vector<Vector2> firePosList;
 	HPEN hPen;
+	COLORREF baseColor;
 };

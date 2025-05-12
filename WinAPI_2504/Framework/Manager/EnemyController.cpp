@@ -6,7 +6,7 @@ enum class EEnemyType
 };
 
 
-EnemyManager::EnemyManager()
+EnemyController::EnemyController()
 {
 	SetSpawnPosition();
 
@@ -18,16 +18,16 @@ EnemyManager::EnemyManager()
 	}
 }
 
-EnemyManager::~EnemyManager()
+EnemyController::~EnemyController()
 {
 	for (Enemy*& enemy : _enemies)
 		delete enemy;
 	_enemies.clear();
 }
 
-void EnemyManager::RoundTimer()
+void EnemyController::RoundTimer()
 {
-	if(!_isSpawn)
+	if (!_isSpawn)
 		_roundTimer += DELTA;
 	_bossSpawnTimer += DELTA;
 
@@ -41,7 +41,7 @@ void EnemyManager::RoundTimer()
 		BossSpawn();
 }
 
-void EnemyManager::SpawnTimer()
+void EnemyController::SpawnTimer()
 {
 	int positionIndex = rand() % _spawnPosition.size();
 
@@ -55,7 +55,7 @@ void EnemyManager::SpawnTimer()
 		_spawnTimer = 0.0f;
 		_spawnCount++;
 		Spawn(positionIndex);
-		
+
 		if (_spawnCount == ENEMY_SPAWN)
 		{
 			_spawnCount = 0;
@@ -64,7 +64,7 @@ void EnemyManager::SpawnTimer()
 	}
 }
 
-void EnemyManager::Update()
+void EnemyController::Update()
 {
 	RoundTimer();
 	SpawnTimer();
@@ -73,25 +73,25 @@ void EnemyManager::Update()
 		enemy->Update();
 }
 
-void EnemyManager::Render(HDC hdc)
+void EnemyController::Render(HDC hdc)
 {
 	for (Enemy*& enemy : _enemies)
 		enemy->Render(hdc);
 }
 
-void EnemyManager::SetPlayer(Player* player)
+void EnemyController::SetPlayer(Player* player)
 {
 	for (Enemy*& enemy : _enemies)
 		enemy->SetPlayer(player);
 }
 
-void EnemyManager::SetSpawnPosition()
+void EnemyController::SetSpawnPosition()
 {
 	for (int i = 1; i < 6; i++)
 		_spawnPosition.push_back(Vector2(100 * i, 0));
 }
 
-void EnemyManager::Spawn(int positionIndex)
+void EnemyController::Spawn(int positionIndex)
 {
 	for (Enemy*& enemy : _enemies)
 	{
@@ -103,9 +103,9 @@ void EnemyManager::Spawn(int positionIndex)
 	}
 }
 
-void EnemyManager::BossSpawn()
+void EnemyController::BossSpawn()
 {
-	Vector2 bossPosition = {SCREEN_WIDTH / 2, 0};
+	Vector2 bossPosition = { SCREEN_WIDTH / 2, 0 };
 	// 보스 스폰 구현 필요
 	_boss->Spawn(bossPosition);
 }

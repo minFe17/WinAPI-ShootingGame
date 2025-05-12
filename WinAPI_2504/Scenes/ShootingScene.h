@@ -21,9 +21,9 @@ private:
 	int _playerIconRadius = 20;
 	Vector2 _playerIconCenter = { 30, 30 };
 	Vector2 scorePosition = { SCREEN_WIDTH / 2, 50 };
-	Player* player;	
+	Player* player;
 	HFONT _scoreFont = CreateFont(SCORE_FONT_SIZE, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,
-								  DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, 
-								  DEFAULT_QUALITY, DEFAULT_PITCH || FF_DONTCARE, L"¸¼Àº °íµñ");
+		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS,
+		DEFAULT_QUALITY, DEFAULT_PITCH || FF_DONTCARE, L"¸¼Àº °íµñ");
 
 };

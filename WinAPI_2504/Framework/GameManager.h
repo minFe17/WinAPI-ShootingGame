@@ -16,7 +16,7 @@ private:
 	void Release();
 
 private:
-	HDC hdc;	
+	HDC hdc;
 
 	SceneManager* sceneManager;
 	HDC backBufferDC;

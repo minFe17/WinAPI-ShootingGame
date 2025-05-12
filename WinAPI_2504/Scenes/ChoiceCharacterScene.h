@@ -2,7 +2,9 @@
 
 enum class EPlayerType
 {
-	DFG,
+	Normal,
+	Heavy,
+	Homing,
 	Max,
 };
 

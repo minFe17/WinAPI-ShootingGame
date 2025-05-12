@@ -30,3 +30,11 @@ void Timer::Update()
 		oneSecondCount = 0.0f;
 	}
 }
+
+void Timer::Render(HDC hdc)
+{
+	wstring str = L"FPS : " + to_wstring(frameRate);
+	TextOut(hdc, 0, 0, str.c_str(), str.size());
+	str = L"ElapsedTime : " + to_wstring(elapsedTime);
+	TextOut(hdc, 0, 20, str.c_str(), str.size());
+}
