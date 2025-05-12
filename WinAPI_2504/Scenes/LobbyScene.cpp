@@ -5,7 +5,7 @@ void LobbyScene::Update()
 	TriggerPlayButton();
 
 	if (_isTriggerPlayButton && Input::Get()->IsKeyDown(VK_LBUTTON))
-		SceneManager::Get()->SetSceneType(SceneType::ChoiceCharacter);
+		SceneManager::Get()->SetSceneType(ESceneType::ChoiceCharacter);
 }
 
 void LobbyScene::Render(HDC hdc)

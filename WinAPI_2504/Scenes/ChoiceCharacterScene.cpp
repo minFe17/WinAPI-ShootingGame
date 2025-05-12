@@ -1,5 +1,4 @@
 #include "Framework.h"
-#include <iostream>
 
 void ChoiceCharacterScene::Update()
 {
@@ -9,8 +8,7 @@ void ChoiceCharacterScene::Update()
 		{
 			SceneManager::Get()->InitInGamePlayer(new Player);
 			//SceneManager::Get()->InitInGamePlayer(_players[i]);
-			SceneManager::Get()->SetSceneType(SceneType::InGame);
-			// 플레이어 변경 필요 -> ShootingGameScene 생성자에서? 
+			SceneManager::Get()->SetSceneType(ESceneType::InGame);
 		}
 	}
 }

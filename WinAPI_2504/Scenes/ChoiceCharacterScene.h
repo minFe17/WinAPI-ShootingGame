@@ -1,6 +1,6 @@
 #pragma once
 
-enum class PlayerType
+enum class EPlayerType
 {
 	DFG,
 	Max,
@@ -18,7 +18,7 @@ private:
 	bool TriggerChoiceButton(RECT button);
 
 private:
-	bool _isTriggerButton[(int)PlayerType::Max];
+	bool _isTriggerButton[(int)EPlayerType::Max];
 	vector<Player*> _players;
 	vector<RECT> _buttons;
 	HBRUSH _buttonBrush = CreateSolidBrush(RGB(63, 193, 232));

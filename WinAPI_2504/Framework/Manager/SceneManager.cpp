@@ -15,7 +15,7 @@ SceneManager::~SceneManager()
 void SceneManager::InitInGamePlayer(Player* player)
 {
 	OutputDebugString(L"InGame scene not initialized yet!\n");
-	ShootingScene* inGameScene = (ShootingScene*)_scenes[(int)SceneType::InGame];
+	ShootingScene* inGameScene = (ShootingScene*)_scenes[(int)ESceneType::InGame];
 	inGameScene->SetPlayer(player);
 	EnemyManager::Get()->SetPlayer(player);
 }

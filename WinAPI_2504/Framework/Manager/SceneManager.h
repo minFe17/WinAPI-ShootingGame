@@ -1,6 +1,6 @@
 #pragma once
 
-enum class SceneType
+enum class ESceneType
 {
 	Lobby,
 	ChoiceCharacter,
@@ -17,7 +17,7 @@ public:
 	~SceneManager();
 
 	Scene* GetScene() { return _scenes[(int)_sceneType]; }
-	void SetSceneType(SceneType type) { _sceneType = type; }
+	void SetSceneType(ESceneType type) { _sceneType = type; }
 	void InitInGamePlayer(Player* player);
 
 private:
@@ -25,5 +25,5 @@ private:
 
 private:
 	vector<Scene*> _scenes;
-	SceneType _sceneType;
+	ESceneType _sceneType;
 };

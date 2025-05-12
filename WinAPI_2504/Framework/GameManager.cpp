@@ -47,12 +47,12 @@ void GameManager::Render()
 
 void GameManager::GameOver()
 {
-	SceneManager::Get()->SetSceneType(SceneType::GameOver);
+	SceneManager::Get()->SetSceneType(ESceneType::GameOver);
 }
 
 void GameManager::GameClear()
 {
-	SceneManager::Get()->SetSceneType(SceneType::GameClear);
+	SceneManager::Get()->SetSceneType(ESceneType::GameClear);
 }
 
 void GameManager::Create()

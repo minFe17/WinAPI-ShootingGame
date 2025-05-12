@@ -1,5 +1,11 @@
 #include "Framework.h"
 
+enum class EEnemyType
+{
+	Max,
+};
+
+
 EnemyManager::EnemyManager()
 {
 	SetSpawnPosition();
