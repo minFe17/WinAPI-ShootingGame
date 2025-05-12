@@ -1,27 +1,18 @@
 #include "Framework.h"
 
-enum class EEnemyType
-{
-	Max,
-};
-
-
 EnemyController::EnemyController()
 {
 	SetSpawnPosition();
-
-	_enemies.resize(ENEMY_POOL_SIZE);
-	for (Enemy*& enemy : _enemies)
-	{
-		enemy = new Enemy();
-		enemy->SetActive(false);
-	}
+	SetEnemyMap();
 }
 
 EnemyController::~EnemyController()
 {
-	for (Enemy*& enemy : _enemies)
-		delete enemy;
+	for (int i = 0; i < (int)EEnemyType::Max; i++)
+	{
+		for (Enemy*& enemy : _enemies[(EEnemyType)i])
+			delete enemy;
+	}
 	_enemies.clear();
 }
 
@@ -64,25 +55,43 @@ void EnemyController::SpawnTimer()
 	}
 }
 
+void EnemyController::SetEnemyMap()
+{
+	for (int i = 0; i < (int)EEnemyType::Max; i++)
+	{
+		for(int j=0; j< ENEMY_POOL_SIZE; j++)
+			_enemies[(EEnemyType)i].push_back(new Enemy());
+	}
+}
+
 void EnemyController::Update()
 {
 	RoundTimer();
 	SpawnTimer();
 
-	for (Enemy*& enemy : _enemies)
-		enemy->Update();
+	for (int i = 0; i < (int)EEnemyType::Max; i++)
+	{
+		for (Enemy*& enemy : _enemies[(EEnemyType)i])
+			enemy->Update();
+	}
 }
 
 void EnemyController::Render(HDC hdc)
 {
-	for (Enemy*& enemy : _enemies)
-		enemy->Render(hdc);
+	for (int i = 0; i < (int)EEnemyType::Max; i++)
+	{
+		for (Enemy*& enemy : _enemies[(EEnemyType)i])
+			enemy->Render(hdc);
+	}
 }
 
 void EnemyController::SetPlayer(Player* player)
 {
-	for (Enemy*& enemy : _enemies)
-		enemy->SetPlayer(player);
+	for (int i = 0; i < (int)EEnemyType::Max; i++)
+	{
+		for (Enemy*& enemy : _enemies[(EEnemyType)i])
+			enemy->SetPlayer(player);
+	}
 }
 
 void EnemyController::SetSpawnPosition()
@@ -93,12 +102,15 @@ void EnemyController::SetSpawnPosition()
 
 void EnemyController::Spawn(int positionIndex)
 {
-	for (Enemy*& enemy : _enemies)
+	for (int i = 0; i < (int)EEnemyType::Max; i++)
 	{
-		if (!enemy->IsActive())
+		for (Enemy*& enemy : _enemies[(EEnemyType)i])
 		{
-			enemy->Spawn(_spawnPosition[positionIndex]);
-			break;
+			if (!enemy->IsActive())
+			{
+				enemy->Spawn(_spawnPosition[positionIndex]);
+				break;
+			}
 		}
 	}
 }

@@ -1,4 +1,13 @@
 #pragma once
+#include <map>
+
+enum class EEnemyType
+{
+	Kamikaze,
+	Grunt,
+	Dodger,
+	Max,
+};
 
 class EnemyController : public Singleton<EnemyController>
 {
@@ -23,6 +32,8 @@ private:
 	void BossSpawn();
 	void RoundTimer();
 	void SpawnTimer();
+	void SetEnemyMap();
+
 
 private:
 	int _spawnCount = 0;
@@ -32,6 +43,6 @@ private:
 	float _roundTimer = 0.0f;
 	bool _isSpawn = false;
 	vector<Vector2> _spawnPosition;
-	vector<Enemy*> _enemies;
+	map<EEnemyType, vector<Enemy*>> _enemies;
 	Enemy* _boss;
 };
