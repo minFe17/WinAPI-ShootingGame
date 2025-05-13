@@ -42,7 +42,15 @@ private:
 	float _bossSpawnTimer = 0.0f;
 	float _roundTimer = 0.0f;
 	bool _isSpawn = false;
+
 	vector<Vector2> _spawnPosition;
 	map<EEnemyType, vector<Enemy*>> _enemies;
+
+	// 죽으면 죽은 몬스터 삭제 필요
+	vector<Enemy*> _activeEnemies;
+
+
+
+
 	Enemy* _boss;
 };

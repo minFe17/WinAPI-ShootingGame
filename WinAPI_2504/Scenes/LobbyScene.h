@@ -7,14 +7,13 @@ public:
 	void Render(HDC hdc) override;
 
 private:
-	void TriggerPlayButton();
-	void SetPlayButton(HDC hdc);
+	//void TriggerPlayButton();
+	//void SetPlayButton(HDC hdc);
 
 private:
-	bool _isTriggerPlayButton;
-	bool _isShowUI;
-	string _title;
+	LobbyButton lobbyButton = LobbyButton();
+	/*bool _isTriggerPlayButton;
 	RECT _playButton;
 	HBRUSH _buttonBrush = CreateSolidBrush(RGB(75, 227, 131));
-	HBRUSH _triggerButtonBrush = CreateSolidBrush(RGB(58, 166, 98));
+	HBRUSH _triggerButtonBrush = CreateSolidBrush(RGB(58, 166, 98));*/
 };

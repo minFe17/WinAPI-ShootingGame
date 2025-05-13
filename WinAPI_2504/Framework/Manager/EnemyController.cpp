@@ -12,6 +12,7 @@ EnemyController::~EnemyController()
 	{
 		for (Enemy*& enemy : _enemies[(EEnemyType)i])
 			delete enemy;
+		_enemies[(EEnemyType)i].clear();
 	}
 	_enemies.clear();
 }
@@ -57,17 +58,23 @@ void EnemyController::SpawnTimer()
 
 void EnemyController::SetEnemyMap()
 {
-	for (int i = 0; i < (int)EEnemyType::Max; i++)
-	{
-		for(int j=0; j< ENEMY_POOL_SIZE; j++)
-			_enemies[(EEnemyType)i].push_back(new Enemy());
-	}
+	for (int j = 0; j < ENEMY_POOL_SIZE; j++)
+		_enemies[EEnemyType::Dodger].push_back(new EnemyDodger());
+
+	for (int j = 0; j < ENEMY_POOL_SIZE; j++)
+		_enemies[EEnemyType::Grunt].push_back(new EnemyGrunt());
+
+	for (int j = 0; j < ENEMY_POOL_SIZE; j++)
+		_enemies[EEnemyType::Kamikaze].push_back(new EnemyKamikaze());
 }
 
 void EnemyController::Update()
 {
 	RoundTimer();
 	SpawnTimer();
+
+	/*for (int i = 0; i < _activeEnemies.size(); i++)
+		_activeEnemies[i]->Update();*/
 
 	for (int i = 0; i < (int)EEnemyType::Max; i++)
 	{
@@ -78,6 +85,9 @@ void EnemyController::Update()
 
 void EnemyController::Render(HDC hdc)
 {
+	/*for (int i = 0; i < _activeEnemies.size(); i++)
+		_activeEnemies[i]->Render(hdc);*/
+
 	for (int i = 0; i < (int)EEnemyType::Max; i++)
 	{
 		for (Enemy*& enemy : _enemies[(EEnemyType)i])
@@ -87,10 +97,14 @@ void EnemyController::Render(HDC hdc)
 
 void EnemyController::SetPlayer(Player* player)
 {
+	/*for (int i = 0; i < _activeEnemies.size(); i++)
+		_activeEnemies[i]->SetPlayer(player);*/
 	for (int i = 0; i < (int)EEnemyType::Max; i++)
 	{
 		for (Enemy*& enemy : _enemies[(EEnemyType)i])
+		{
 			enemy->SetPlayer(player);
+		}
 	}
 }
 
@@ -102,15 +116,14 @@ void EnemyController::SetSpawnPosition()
 
 void EnemyController::Spawn(int positionIndex)
 {
-	for (int i = 0; i < (int)EEnemyType::Max; i++)
+	EEnemyType type = (EEnemyType)(rand() % (int)EEnemyType::Max);
+	for (Enemy*& enemy : _enemies[type])
 	{
-		for (Enemy*& enemy : _enemies[(EEnemyType)i])
+		if (!enemy->IsActive())
 		{
-			if (!enemy->IsActive())
-			{
-				enemy->Spawn(_spawnPosition[positionIndex]);
-				break;
-			}
+			enemy->Spawn(_spawnPosition[positionIndex]);
+			_activeEnemies.push_back(enemy);
+			break;
 		}
 	}
 }
@@ -118,6 +131,5 @@ void EnemyController::Spawn(int positionIndex)
 void EnemyController::BossSpawn()
 {
 	Vector2 bossPosition = { SCREEN_WIDTH / 2, 0 };
-	// 보스 스폰 구현 필요
 	_boss->Spawn(bossPosition);
 }

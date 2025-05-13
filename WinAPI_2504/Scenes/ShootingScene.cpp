@@ -1,14 +1,10 @@
 #include "Framework.h"
-#include "ShootingScene.h"
 
 ShootingScene::ShootingScene()
 {
-	//player = new HomingPlayer();	
-	//player = new NormalPlayer();
-	player = new HeavyPlayer();
-
 	BulletManager::Get();
 	EnemyManager::Get()->SetPlayer(player);
+	//EnemyController::Get()->SetPlayer(player);
 	ItemManager::Get();
 }
 
@@ -17,6 +13,7 @@ ShootingScene::~ShootingScene()
 	delete player;
 	BulletManager::Delete();
 	EnemyManager::Delete();
+	//EnemyController::Delete();
 	ItemManager::Delete();
 }
 
@@ -25,6 +22,7 @@ void ShootingScene::Update()
 	player->Update();
 	BulletManager::Get()->Update(player);
 	EnemyManager::Get()->Update(player);
+	//EnemyController::Get()->Update();
 	ItemManager::Get()->Update();
 	
 }
@@ -32,6 +30,7 @@ void ShootingScene::Update()
 void ShootingScene::Render(HDC hdc)
 {
 	EnemyManager::Get()->Render(hdc);
+	//EnemyController::Get()->Render(hdc);
 	BulletManager::Get()->Render(hdc);
 	ItemManager::Get()->Render(hdc);
 	player->Render(hdc);

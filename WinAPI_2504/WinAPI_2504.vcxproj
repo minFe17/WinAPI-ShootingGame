@@ -130,6 +130,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Button\Button.h" />
+    <ClInclude Include="Button\CharacterButton.h" />
+    <ClInclude Include="Button\EPlayerType.h" />
+    <ClInclude Include="Button\LobbyButton.h" />
     <ClInclude Include="Framework.h" />
     <ClInclude Include="Framework\GameManager.h" />
     <ClInclude Include="Framework\Manager\EnemyController.h" />
@@ -168,6 +172,9 @@
     <ClInclude Include="WinAPI_2504.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Button\Button.cpp" />
+    <ClCompile Include="Button\CharacterButton.cpp" />
+    <ClCompile Include="Button\LobbyButton.cpp" />
     <ClCompile Include="Framework.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>

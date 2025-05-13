@@ -49,6 +49,11 @@ using namespace std;
 
 #include "Framework/Manager/EnemyController.h"
 
+#include "Button/EPlayerType.h"
+#include "Button/Button.h"
+#include "Button/LobbyButton.h"
+#include "Button/CharacterButton.h"
+
 #include "Scenes/Scene.h"
 #include "Scenes/LobbyScene.h"
 #include "Scenes/ChoiceCharacterScene.h"
