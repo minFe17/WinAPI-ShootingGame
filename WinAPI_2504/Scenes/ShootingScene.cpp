@@ -36,7 +36,6 @@ void ShootingScene::Render(HDC hdc)
 	player->Render(hdc);
 
 	ShowScore(hdc);
-	ShowHP(hdc);
 }
 
 
@@ -48,18 +47,6 @@ void ShootingScene::ShowScore(HDC hdc)
 
 	wstring score = to_wstring(ScoreManager::Get()->GetScore());
 	TextOut(hdc, scorePosition.x, scorePosition.y, score.c_str(), score.length());
-}
-
-void ShootingScene::ShowHP(HDC hdc)
-{
-	DrawPlayerIcon(hdc);
-
-	SetTextAlign(hdc, TA_LEFT | TA_TOP);
-
-	// 점수가 아닌 플레이어 체력
-	// 이미 플레이어가 있으니 플레이어에 함수 만들기?
-	wstring hp = to_wstring(ScoreManager::Get()->GetScore());
-	TextOut(hdc, 70, 5, hp.c_str(), hp.length());
 }
 
 void ShootingScene::DrawPlayerIcon(HDC hdc)

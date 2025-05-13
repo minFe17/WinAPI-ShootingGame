@@ -14,7 +14,6 @@ public:
 
 private:
 	void ShowScore(HDC hdc);
-	void ShowHP(HDC hdc);
 	void DrawPlayerIcon(HDC hdc);
 
 private:
