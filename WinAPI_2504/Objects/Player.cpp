@@ -8,11 +8,15 @@ Player::Player() : Circle(30)
 	baseDamage = 10;
 	damage = baseDamage;
 	center = { SCREEN_WIDTH >> 1, SCREEN_HEIGHT * 4 / 5 };
+
+	shieldPen = CreatePen(PS_SOLID, 3, RGB(0, 255, 255));
+	nullBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 }
 
 Player::~Player()
 {
 	DeleteObject(hPen);	
+	DeleteObject(shieldPen);
 }
 
 void Player::Update()
@@ -170,17 +174,13 @@ void Player::DrawShieldEffect(HDC hdc)
 {
 	if (!isShield) return;
 
-	HPEN shieldPen = CreatePen(PS_SOLID, 3, RGB(0, 255, 255));
 	HPEN oldPen = (HPEN)SelectObject(hdc, shieldPen);
-
-	HBRUSH nullBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 	HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, nullBrush);
 
-	Ellipse(hdc,center.x - radius - 5, center.y - radius - 5,center.x + radius + 5, center.y + radius + 5);
+	Ellipse(hdc, center.x - radius - 5, center.y - radius - 5, center.x + radius + 5, center.y + radius + 5);
 
 	SelectObject(hdc, oldPen);
 	SelectObject(hdc, oldBrush);
-	DeleteObject(shieldPen);
 }
 
 

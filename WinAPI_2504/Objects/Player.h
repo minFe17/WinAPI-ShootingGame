@@ -56,4 +56,7 @@ protected:
 	vector<Vector2> firePosList;
 	HPEN hPen;
 	COLORREF baseColor;
+
+	HPEN shieldPen;
+	HBRUSH nullBrush;
 };
