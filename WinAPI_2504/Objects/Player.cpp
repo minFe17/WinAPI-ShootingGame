@@ -116,7 +116,7 @@ void Player::Fire()
 
 void Player::ControlFire()
 {
-	if (Input::Get()->IsKeyDown(VK_LBUTTON) && fireTimer >= fireCooldown)
+	if (Input::Get()->IsKeyDown(VK_SPACE) && fireTimer >= fireCooldown)
 	{
 		Fire();
 		fireTimer = 0.0f;
