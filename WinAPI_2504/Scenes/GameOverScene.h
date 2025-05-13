@@ -11,7 +11,7 @@ public:
 
 private:
 	wstring _firstLineText = L"Game";
-	wstring _secondLineText = L"Clear";
+	wstring _secondLineText = L"Over";
 	Vector2 _firstLinePos = { 300, 300 };
 	Vector2 _secondLinePos = { 300, 400 };
 	HFONT _font = CreateFont(FONT_SIZE, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE,

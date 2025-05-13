@@ -85,6 +85,7 @@ void Player::HitEnemy()
 		return;
 	}
 
+	GameManager::Get()->GameOver();
 	isDead = true;
 	isDamaged = true;
 	damageTimer = 0.0f;
