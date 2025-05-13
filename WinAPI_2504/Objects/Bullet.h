@@ -5,7 +5,7 @@ class Enemy;
 class Bullet : public PolygonVector
 {
 private:
-	const float SPEED = 500;
+	float SPEED = 500;
 	const float REDIRECT_DISTANCE = 100.0f;
 
 public:
@@ -32,7 +32,7 @@ public:
 	void SetDamage(int attackDamage) { damage = attackDamage; }
 	void SetHasRedirected(bool value) { hasRedirected = value; }
 	void SetColor(COLORREF color) { bulletColor = color; }
-
+	void SetSpeed(float speed) { this->SPEED = speed; }
 	
 private:	
 	int damage = 10;

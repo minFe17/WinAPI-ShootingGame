@@ -3,7 +3,7 @@
 class EnemyKamikaze : public Enemy
 {
 private:
-    const int SPEED = 200;    
+    const int SPEED = 200;
     const int MAX_HP = 5;
     const int RADIUS = 10;
     const int DAMAGE = 10;
@@ -25,12 +25,12 @@ private:
     void CheckExplosion();
 
 private:
- 
+
     bool isCharging = false;
     float chargeTimer = 0;
 
     HBRUSH hRedBrush;
     HBRUSH hBlueBrush;
-    HBRUSH hSelectBrush;    
+    HBRUSH hSelectBrush;
 
-}; 
+};

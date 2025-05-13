@@ -2,7 +2,7 @@
 
 #include "Bullet.h"
 class Item;
-class Player : public Circle
+class Player : public PolygonVector
 {
 protected:
 	const int SPEED = 300;
@@ -25,7 +25,9 @@ public:
 
 	void CollisionItem();
 
-	void HitEnemy();    
+	void Damage();
+
+	void HitEnemy();
 	bool IsDead() const { return isDead; }
 
 protected:

@@ -2,7 +2,7 @@
 
 class Player;  // Player 클래스 전방 선언
 
-class ShipCannon : PolygonVector {
+class ShipTurret : Enemy {
 private:
 	const float BARREL_SIZE = 30;
 	const int DAMAGE = 10;
@@ -22,14 +22,14 @@ private:
 	};
 public:
 
-	ShipCannon() { radius = 30; };
+	ShipTurret() { radius = 30; };
 	void SetPlayer(Player* player) { this->player = player; }
 	void SetCenter(Vector2 center) { this->center = center; }
 	void Render(HDC hdc) {
 		if (!isActive) return;
 		HBRUSH defaultBrush = (HBRUSH)SelectObject(hdc, hSelectBrush);
 		Circle::Render(hdc);
-		DrawRotatedRectangle(hdc, barrel,angle);
+		DrawRotatedRectangle(hdc, barrel, angle);
 		SelectObject(hdc, defaultBrush);
 	}
 	void spawn(Vector2 pos) {
@@ -40,14 +40,12 @@ public:
 
 	}
 
-
-
 };
 
 class EnemyBossShip : public Enemy
 {
 private:
-	const int SPEED = 30;    
+	const int SPEED = 30;
 	const int MAX_HP = 300;
 	const int RADIUS = 50;
 	const int DAMAGE = 10;
@@ -56,9 +54,17 @@ private:
 	const float BULLET_SPEED = 200;
 	const float TURRET_RADIUS = 15;  // 포대의 반지름
 	const float TURRET_SPACING = 40; // 포대 간의 간격
-
+	const float TURRET_HP = 30; // 포대 간의 간격
+	const float BARREL_SIZE = 30;
+	vector<Vector2> barrel = {
+		{ 0.0f, 4.0f },
+		{ BARREL_SIZE * 1.0f, 4.0f },
+		{ BARREL_SIZE * 1.0f, -4.0f },
+		{ 0.0f, -4.0f }
+	};
 	struct Turret {
 		Vector2 position;
+		Vector2 direction;
 		bool isActive;
 		int hp;
 		const int MAX_TURRET_HP = 50;
@@ -87,7 +93,7 @@ private:
 	float damageTimer = 0;
 	float fireTimer = 0;
 	float spawnTimer = 0.0f;  // 스폰 타이머 추가
-	bool isDamaged = false;    
+	bool isDamaged = false;
 	bool isDead = false;
 	HBRUSH hRedBrush;
 	HBRUSH hBlueBrush;

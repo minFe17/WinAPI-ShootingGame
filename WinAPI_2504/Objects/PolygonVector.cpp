@@ -16,6 +16,14 @@ void PolygonVector::DrawPolygon(HDC hdc, vector<Vector2>& vertexs)
 	Polygon(hdc, vertexP.data(), (int)vertexP.size());
 }
 
+void PolygonVector::DrawPolygonAbs(HDC hdc, vector<Vector2>& vertexs, Vector2& pos)
+{
+	vector<POINT> vertexP(vertexs.size());
+	for (size_t i = 0; i < vertexs.size(); ++i)
+		vertexP[i] = { (int)(vertexs[i].x + pos.x), (int)(vertexs[i].y + pos.y) };
+	Polygon(hdc, vertexP.data(), (int)vertexP.size());
+}
+
 
 bool PolygonVector::IsLineCircleCollision(const Vector2& P1, const Vector2& P2) {
 
@@ -62,6 +70,13 @@ void PolygonVector::DrawRotatedRectangle(HDC hdc, vector<Vector2> vertex, float 
 		vert = vert.Rotate(angle);
 
 	DrawPolygon(hdc, vertex);
+}
 
+void PolygonVector::DrawRotatedRectangleAbs(HDC hdc, vector<Vector2> vertex, float angle, Vector2 pos)
+{
+	// direction 벡터의 각도 계산
+	for (auto& vert : vertex)
+		vert = vert.Rotate(angle);
 
+	DrawPolygonAbs(hdc, vertex, pos);
 }

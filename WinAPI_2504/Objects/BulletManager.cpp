@@ -21,6 +21,7 @@ BulletManager::~BulletManager()
 
 void BulletManager::Update(Player* player)
 {
+	/*
 	for (Bullet*& bullet : bullets)
 	{
 		if (!bullet->IsActive()) continue;
@@ -39,6 +40,7 @@ void BulletManager::Update(Player* player)
 				}
 			}
 		}
+
 		else if (bullet->GetTag() == "Enemy")
 		{
 			if (bullet->IsCollisionCircle(player))
@@ -49,6 +51,7 @@ void BulletManager::Update(Player* player)
 			}
 		}
 	}
+	*/
 
 	for (Bullet*& bullet : bullets)
 	{
@@ -88,7 +91,7 @@ bool BulletManager::IsCollision(PolygonVector* circle, string tag)
 
 	return false;
 }
-void BulletManager::Fire(Vector2 pos, string tag,int damage, COLORREF color, Vector2 direction)
+void BulletManager::Fire(Vector2 pos, string tag, int damage, COLORREF color, Vector2 direction)
 {
 	for (Bullet*& bullet : bullets)
 	{
@@ -98,12 +101,31 @@ void BulletManager::Fire(Vector2 pos, string tag,int damage, COLORREF color, Vec
 			bullet->SetTag(tag);
 			bullet->SetDamage(damage);
 			bullet->SetColor(color);
+			bullet->SetSpeed(500);
+
+			break;
+		}
+	}
+}
+void BulletManager::Fire(Vector2 pos, string tag, int damage, COLORREF color, Vector2 direction, int speed)
+{
+	for (Bullet*& bullet : bullets)
+	{
+		if (!bullet->IsActive())
+		{
+			bullet->Fire(pos, direction);
+			bullet->SetTag(tag);
+			bullet->SetDamage(damage);
+			bullet->SetColor(color);
+			bullet->SetSpeed(speed);
 			break;
 		}
 	}
 }
 
-Bullet* BulletManager::GetCollidedBullet(Circle* circle, string tag)
+
+
+Bullet* BulletManager::GetCollidedBullet(PolygonVector* circle, string tag)
 {
 
 	for (Bullet* bullet : bullets)
@@ -111,7 +133,7 @@ Bullet* BulletManager::GetCollidedBullet(Circle* circle, string tag)
 		if (!bullet->IsActive()) continue;
 		if (bullet->GetTag() != tag) continue;
 
-		if (bullet->IsCollisionCircle(circle))
+		if (bullet->IsCollisionCircle(circle) || bullet->IsPolygonCircleCollision(circle))
 		{
 			bullet->SetActive(false);
 			return bullet;

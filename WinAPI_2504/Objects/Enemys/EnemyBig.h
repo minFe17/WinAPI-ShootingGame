@@ -3,7 +3,7 @@
 class EnemyBig : public Enemy
 {
 private:
-	const int SPEED = 50;	
+	const int SPEED = 50;
 	const int MAX_HP = 100;
 	const int RADIUS = 1;
 	const int DAMAGE = 10;

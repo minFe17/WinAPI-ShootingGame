@@ -3,7 +3,7 @@
 class EnemyDodger : public Enemy
 {
 private:
-    const int SPEED = 50;    
+    const int SPEED = 50;
     const int MAX_HP = 20;
     const int RADIUS = 10;
     const int DAMAGE = 10;
@@ -29,4 +29,4 @@ private:
 private:
     float fireTimer = 0;
     float zigzagTimer = 0;
-}; 
+};

@@ -4,6 +4,7 @@ EnemyKamikaze::EnemyKamikaze() : Enemy()
 {
     hRedBrush = CreateSolidBrush(RGB(255, 0, 0));
     hBlueBrush = CreateSolidBrush(RGB(0, 0, 255));
+    hPen = CreatePen(PS_SOLID, 5, RGB(0, 0, 0));
     hSelectBrush = hBlueBrush;
 }
 
@@ -18,16 +19,18 @@ void EnemyKamikaze::Update()
     if (!isActive) return;
 
     Move();
-//    Damage();
+    Damage();
     CheckExplosion();
 }
 
 void EnemyKamikaze::Render(HDC hdc)
 {
     if (!isActive) return;
-
+    ChangeColor();
+    HPEN defaultPen = (HPEN)SelectObject(hdc, hPen);
     HBRUSH defaultBrush = (HBRUSH)SelectObject(hdc, hSelectBrush);
     Circle::Render(hdc);
+    SelectObject(hdc, defaultPen);
     SelectObject(hdc, defaultBrush);
 }
 
@@ -87,4 +90,4 @@ void EnemyKamikaze::CheckExplosion()
         player->HitEnemy();
         isActive = false;
     }
-} 
+}

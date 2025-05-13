@@ -7,7 +7,7 @@ private:
 	const int MAX_HP = 30;
 	const float DAMAGE_INTERVAL = 0.1f;
 	const float FIRE_INTERVAL = 1.0f;
-	const int ITEM_DROP_RATE = 50; 
+	const int ITEM_DROP_RATE = 50;
 public:
 	Enemy();
 	~Enemy();
@@ -17,7 +17,8 @@ public:
 	virtual void Move();
 	virtual void Fire();
 	virtual void Spawn(Vector2 pos);
-	virtual void Damage(int damage);
+	virtual void Damage();
+	void ChangeColor();
 	void SetPlayer(Player* player) { this->player = player; }
 
 
@@ -34,9 +35,11 @@ private:
 protected:
 	int hp = 0;
 	int damage = 0;
+	int score = 100;
+
 	HBRUSH hRedBrush;
 	HBRUSH hBlueBrush;
 	HBRUSH hSelectBrush;
-
+	HPEN hPen;
 	Player* player = nullptr;
 };

@@ -1,6 +1,6 @@
 #include "Framework.h"
 
-Player::Player() : Circle(30)
+Player::Player()
 {
 	fireTimer = 0.0f;
 	fireCooldown = 0.0f;
@@ -8,6 +8,7 @@ Player::Player() : Circle(30)
 	baseDamage = 10;
 	damage = baseDamage;
 	center = { SCREEN_WIDTH >> 1, SCREEN_HEIGHT * 4 / 5 };
+	radius = 15;
 
 	shieldPen = CreatePen(PS_SOLID, 3, RGB(0, 255, 255));
 	nullBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
@@ -25,6 +26,7 @@ void Player::Update()
 	ControlMove();	
 	ControlFire();
 	CollisionItem();
+	Damage();
 	ClampToScreenBounds();
 	ColorEffect();
 }
@@ -63,6 +65,11 @@ void Player::CollisionItem()
 	}
 }
 
+void Player::Damage()
+{
+	Bullet* bullet = BulletManager::Get()->GetCollidedBullet(this, "Enemy");
+	if (bullet != nullptr) HitEnemy();
+}
 void Player::HitEnemy()
 {
 	if (isShield)

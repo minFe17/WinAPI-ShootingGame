@@ -5,7 +5,7 @@ EnemyDodger::EnemyDodger() : Enemy()
     hRedBrush = CreateSolidBrush(RGB(255, 0, 0));
     hBlueBrush = CreateSolidBrush(RGB(0, 0, 255));
     hSelectBrush = hBlueBrush;
-
+    hPen = CreatePen(PS_SOLID, 5, RGB(0, 0, 0));
     AddVertexs({ (float)-RADIUS, 0 });
     AddVertexs({ (float)RADIUS, 0 });
     AddVertexs({ 0, (float)RADIUS });
@@ -22,25 +22,19 @@ void EnemyDodger::Update()
     if (!isActive) return;
 
     Move();
-//    Damage();
+    Damage();
     Fire();
 }
 
 void EnemyDodger::Render(HDC hdc)
 {
     if (!isActive) return;
+    ChangeColor();
 
     HBRUSH defaultBrush = (HBRUSH)SelectObject(hdc, hSelectBrush);
-    //    Circle::Render(hdc);
-    /*
-    POINT vertex[3] = {
-        {center.x - radius,center.y},
-        {center.x + radius,center.y},
-        {center.x,center.y + radius}
-    };*/
-
+    HPEN defaultPen = (HPEN)SelectObject(hdc, hPen);
     DrawPolygon(hdc, vertexs);
-
+    SelectObject(hdc, defaultPen);
     SelectObject(hdc, defaultBrush);
 }
 
@@ -59,7 +53,7 @@ void EnemyDodger::Move()
 {
     zigzagTimer += DELTA;
     float offset = sin(zigzagTimer * ZIGZAG_SPEED) * ZIGZAG_RANGE;
-    
+
     center.x += offset * DELTA;
     center.y += SPEED * DELTA;
 
@@ -76,6 +70,6 @@ void EnemyDodger::Fire()
     if (fireTimer >= FIRE_INTERVAL)
     {
         fireTimer = 0.0f;
-        BulletManager::Get()->Fire(center + Vector2{0,(float)radius}, "Enemy", damage, COLOR_ENEMY_BULLET,Vector2::Down());
+        BulletManager::Get()->Fire(center + Vector2{ 0,(float)radius }, "Enemy", damage, COLOR_ENEMY_BULLET, Vector2::Down());
     }
-}  
+}

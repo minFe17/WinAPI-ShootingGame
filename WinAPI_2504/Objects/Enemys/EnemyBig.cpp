@@ -4,11 +4,12 @@ EnemyBig::EnemyBig() : Enemy()
 {
 	hRedBrush = CreateSolidBrush(RGB(255, 0, 0));
 	hBlueBrush = CreateSolidBrush(RGB(0, 0, 255));
+	hPen = CreatePen(PS_SOLID, 5, RGB(0, 0, 0));
 	hSelectBrush = hBlueBrush;
 
-	AddVertexs({ (float)-WIDTH/2,0 });
+	AddVertexs({ (float)-WIDTH / 2,0 });
 	AddVertexs({ 0,HEIGHT / 3 });
-	AddVertexs({ (float)WIDTH/2,0 });
+	AddVertexs({ (float)WIDTH / 2,0 });
 	AddVertexs({ 0,HEIGHT });
 }
 
@@ -23,17 +24,19 @@ void EnemyBig::Update()
 	if (!isActive) return;
 
 	Move();
-//	Damage();	
+	Damage();
 	Fire();
 }
 
 void EnemyBig::Render(HDC hdc)
 {
 	if (!isActive) return;
-
+	ChangeColor();
+	HPEN defaultPen = (HPEN)SelectObject(hdc, hPen);
 	HBRUSH defaultBrush = (HBRUSH)SelectObject(hdc, hSelectBrush);
 
 	DrawPolygon(hdc, vertexs);
+	SelectObject(hdc, defaultPen);
 	SelectObject(hdc, defaultBrush);
 }
 
@@ -66,6 +69,6 @@ void EnemyBig::Fire()
 		fireTimer = 0.0f;
 
 		Vector2 direction = player->GetCenter() - center;
-		BulletManager::Get()->Fire(center, "Enemy",damage,COLOR_ENEMY_BULLET, direction);
+		BulletManager::Get()->Fire(center + Vector2(0, HEIGHT), "Enemy", damage, COLOR_ENEMY_BULLET, direction);
 	}
 }

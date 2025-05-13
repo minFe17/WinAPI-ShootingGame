@@ -5,6 +5,7 @@ EnemyGrunt::EnemyGrunt() : Enemy()
     hRedBrush = CreateSolidBrush(RGB(255, 0, 0));
     hBlueBrush = CreateSolidBrush(RGB(0, 0, 255));
     hSelectBrush = hBlueBrush;
+    hPen = CreatePen(PS_SOLID, 5, RGB(0, 0, 0));
     vertexs.resize(4);
 
     AddVertexs({ 0.0f, 4.0f });
@@ -20,22 +21,17 @@ EnemyGrunt::~EnemyGrunt()
     DeleteObject(hBlueBrush);
 }
 
-void EnemyGrunt::Update()
-{
-    if (!isActive) return;
-    Move();
-//    Damage();
-    Fire();
-}
-
 void EnemyGrunt::Render(HDC hdc)
 {
     if (!isActive) return;
-
+    ChangeColor();
+    HPEN defaultPen = (HPEN)SelectObject(hdc, hPen);
     HBRUSH defaultBrush = (HBRUSH)SelectObject(hdc, hSelectBrush);
     Circle::Render(hdc);
 
-    DrawRotatedRectangle(hdc, vertexs,angle);
+    DrawRotatedRectangle(hdc, vertexs, angle);
+
+    SelectObject(hdc, defaultPen);
     SelectObject(hdc, defaultBrush);
 }
 
@@ -76,12 +72,12 @@ void EnemyGrunt::Fire()
         Vector2 offset = firePosition - center; // center를 기준으로 한 상대적인 위치
 
         // 회전된 상대적인 위치를 구함
-        Vector2 rotatedOffset = offset.Rotate(angle);  // 회전된 상대적인 위치 (시계방향으로 90도 회전)
+//        Vector2 rotatedOffset = offset.Rotate(angle);  // 회전된 상대적인 위치 (시계방향으로 90도 회전)
 
         // 회전된 위치
-        Vector2 rotatedFirePosition = center + rotatedOffset;
-
+//        Vector2 rotatedFirePosition = center + rotatedOffset;
+        Vector2 rotatedFirePosition = center + offset;
         // 총알 발사
         BulletManager::Get()->Fire(rotatedFirePosition, "Enemy", damage, COLOR_ENEMY_BULLET, direction);
     }
-} 
+}
