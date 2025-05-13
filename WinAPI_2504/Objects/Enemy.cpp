@@ -79,6 +79,11 @@ void Enemy::Damage(int damage)
 
 	if (hp <= 0)
 	{
+		int randomDrop = rand() % 100+1;
+		if (randomDrop <= ITEM_DROP_RATE)
+		{
+			ItemManager::Get()->SpawnItem(center);
+		}
 		isActive = false;
 	}
 

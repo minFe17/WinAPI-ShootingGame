@@ -2,8 +2,8 @@
 
 HeavyPlayer::HeavyPlayer()
 {
-    fireCooldown = 1.0f;
-    baseDamage = 30;
+    fireCooldown = COOL_TIME;
+    baseDamage = HEAVY_DAMAGE;
     damage = baseDamage;
     baseColor = RGB(100, 50, 100);
 }

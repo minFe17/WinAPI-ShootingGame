@@ -8,7 +8,8 @@ protected:
 	const int SPEED = 300;
 	const int BULLET_POOL_SIZE = 50;
 	const float AIM_LENGTH = 50.0f;
-
+	const float PLAYER_POWERUP_PERCENT = 0.2f;
+	const float EFFECT_TIME = 0.3f;
 	const int INIT_BULLET_COUNT = 1;
 	const int MAX_BULLET_COUNT = 5;
 

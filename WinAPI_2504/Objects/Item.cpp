@@ -3,16 +3,22 @@
 Item::Item() : Circle(15)
 {
 	isActive = true;
-	//type = ItemType::MultiShot;
+	MBrush = CreateSolidBrush(RGB(255, 255, 0));
+	PBrush = CreateSolidBrush(RGB(255, 0, 255));
+	SBrush = CreateSolidBrush(RGB(0, 255, 255));
 }
 
 Item::~Item()
 {
+	DeleteObject(MBrush);
+	DeleteObject(PBrush);
+	DeleteObject(SBrush);
+	DeleteObject(brush);
 }
 
 void Item::Update()
 {
-	center.y += 100 * DELTA;
+	center.y += DOWN_SPEED * DELTA;
 	if (center.y > SCREEN_HEIGHT)
 	{
 		isActive = false;
@@ -25,16 +31,14 @@ void Item::Render(HDC hdc)
 	switch (type)
 	{
 	case ItemType::MultiShot:
-		brush = CreateSolidBrush(RGB(255, 255, 0)); break;
+		brush = MBrush; break;
 	case ItemType::PowerUp:
-		brush = CreateSolidBrush(RGB(255, 0, 255)); break;
+		brush = PBrush; break;
 	case ItemType::Shield:
-		brush = CreateSolidBrush(RGB(0, 255, 255)); break;
+		brush = SBrush; break;
 	}
 
 	HBRUSH old = (HBRUSH)SelectObject(hdc, brush);
 	Circle::Render(hdc);
 	SelectObject(hdc, old);
-	DeleteObject(brush);
-
 }

@@ -3,6 +3,8 @@
 //#include "Framework.h"
 class Item : public Circle
 {
+private:
+	const int DOWN_SPEED = 100;
 public:
 	Item();
 	~Item();
@@ -18,4 +20,7 @@ private:
 	ItemType type;
 
 	HBRUSH brush;
+	HBRUSH MBrush;
+	HBRUSH PBrush;
+	HBRUSH SBrush;
 };

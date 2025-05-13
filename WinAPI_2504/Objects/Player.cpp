@@ -40,7 +40,7 @@ void Player::LevelUp(ItemType type)
 			bulletCount++;
 		break;
 	case ItemType::PowerUp:
-		damage +=baseDamage*0.2;
+		damage +=baseDamage*PLAYER_POWERUP_PERCENT;
 		break;
 	case ItemType::Shield:
 		if (!isShield)
@@ -159,7 +159,7 @@ void Player::ColorEffect()
 	if (!isDamaged) return;
 
 	damageTimer += DELTA;
-	if (damageTimer >= 0.1f)
+	if (damageTimer >= EFFECT_TIME)
 	{
 		damageTimer = 0.0f;
 		isDamaged = false;

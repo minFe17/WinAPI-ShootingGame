@@ -38,19 +38,8 @@ void ItemManager::Render(HDC hdc)
 
 void ItemManager::SetRandomItem(Item*& item)
 {
-	int randomType = rand() % 3;
-	switch (randomType)
-	{
-	case 0:
-		item->SetType(ItemType::MultiShot);
-		break;
-	case 1:
-		item->SetType(ItemType::PowerUp);
-		break;
-	case 2:
-		item->SetType(ItemType::Shield);
-		break;
-	}
+	int randomType = rand() % (int)ItemType::End;
+	item->SetType((ItemType)randomType);
 }
 
 void ItemManager::SpawnItem(Vector2 pos)

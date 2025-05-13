@@ -3,5 +3,6 @@ enum class ItemType
 {
 	MultiShot,
 	PowerUp,
-	Shield
+	Shield,
+	End
 };

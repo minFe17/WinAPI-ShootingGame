@@ -2,8 +2,8 @@
 
 HomingPlayer::HomingPlayer()
 {
-    fireCooldown = 0.3f;
-    baseDamage = 20;
+    fireCooldown = COOL_TIME;
+    baseDamage = HOMING_DAMAGE;
     damage = baseDamage;
     baseColor = RGB(50, 100, 200);
 }
