@@ -3,9 +3,9 @@
 class GameClearScene : public Scene
 {
 private:
-	const int FONT_SIZE = 100;
-	int SCORE_FONT_SIZE = 50;
-	const wchar_t* TEXT = L"Game\nClear";
+	const int FONT_SIZE = 70;
+	const int SCORE_FONT_SIZE = 50;
+	const wstring TEXT = L"Clear";
 
 public:
 	void Update() override;

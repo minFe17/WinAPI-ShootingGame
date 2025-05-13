@@ -7,9 +7,7 @@ void GameOverScene::Update()
 
 void GameOverScene::Render(HDC hdc)
 {
-	RECT rect = { 0, 250, 600, 800 };
-
 	SelectObject(hdc, _font);
-	DrawTextW(hdc, TEXT, -1, &rect,
-		DT_CENTER | DT_VCENTER | DT_WORDBREAK);
+	TextOut(hdc, _firstLinePos.x, _firstLinePos.y, _firstLineText.c_str(), _firstLineText.size());
+	TextOut(hdc, _secondLinePos.x, _secondLinePos.y, _secondLineText.c_str(), _secondLineText.size());
 }
