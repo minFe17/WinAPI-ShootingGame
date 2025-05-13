@@ -133,7 +133,10 @@
     <ClInclude Include="Button\Button.h" />
     <ClInclude Include="Button\CharacterButton.h" />
     <ClInclude Include="Button\EPlayerType.h" />
+    <ClInclude Include="Button\HeavyPlayerButton.h" />
+    <ClInclude Include="Button\HomingPlayerButton.h" />
     <ClInclude Include="Button\LobbyButton.h" />
+    <ClInclude Include="Button\NormalPlayerButton.h" />
     <ClInclude Include="Framework.h" />
     <ClInclude Include="Framework\GameManager.h" />
     <ClInclude Include="Framework\Manager\EnemyController.h" />
@@ -174,7 +177,10 @@
   <ItemGroup>
     <ClCompile Include="Button\Button.cpp" />
     <ClCompile Include="Button\CharacterButton.cpp" />
+    <ClCompile Include="Button\HeavyPlayerButton.cpp" />
+    <ClCompile Include="Button\HomingPlayerButton.cpp" />
     <ClCompile Include="Button\LobbyButton.cpp" />
+    <ClCompile Include="Button\NormalPlayerButton.cpp" />
     <ClCompile Include="Framework.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>

@@ -8,10 +8,5 @@ public:
 	void Render(HDC hdc) override;
 
 private:
-	void InitPlayers();
-
-private:
 	vector<CharacterButton*> _buttons;
-	vector<Player*> _players;
-	vector<RECT> _buttonPos;
 };

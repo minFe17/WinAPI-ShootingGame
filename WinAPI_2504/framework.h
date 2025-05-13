@@ -53,6 +53,9 @@ using namespace std;
 #include "Button/Button.h"
 #include "Button/LobbyButton.h"
 #include "Button/CharacterButton.h"
+#include "Button/NormalPlayerButton.h"
+#include "Button/HeavyPlayerButton.h"
+#include "Button/HomingPlayerButton.h"
 
 #include "Scenes/Scene.h"
 #include "Scenes/LobbyScene.h"

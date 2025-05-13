@@ -1,10 +1,7 @@
 #include "Framework.h"
 
-CharacterButton::CharacterButton(Player* player, EPlayerType type, RECT rect)
+CharacterButton::CharacterButton()
 {
-	_player = player;
-	_type = type;
-	_button = rect;
 	_brush = CreateSolidBrush(RGB(63, 193, 232));
 	_triggerBrush = CreateSolidBrush(RGB(64, 168, 199));
 }
